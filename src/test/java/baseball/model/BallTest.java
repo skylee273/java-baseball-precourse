@@ -17,4 +17,31 @@ public class BallTest {
         assertThat(new Ball(input)).isNotEqualTo(new Ball(input));
     }
 
+    @DisplayName("숫자가 아닌 값을 받았을때 예외 발생")
+    @ParameterizedTest
+    @ValueSource(strings = {"123", "$", "Ball"})
+    void validateInputTypeTest(int input){
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+           new Ball(input);
+        });
+    }
+
+    @DisplayName("음수 값을 받으면 예외 발생")
+    @ParameterizedTest
+    @ValueSource(ints = {-1})
+    void validateInputNegativeTest(int input){
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            new Ball(input);
+        });
+    }
+
+    @DisplayName("1~9 이외에 값을 받는지 확인")
+    @ParameterizedTest
+    @ValueSource(ints = {10, 5, 0})
+    void validateRangeNumber(int input){
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            new Ball(input);
+        });
+    }
+
 }
