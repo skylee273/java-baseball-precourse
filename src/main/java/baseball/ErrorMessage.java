@@ -1,7 +1,8 @@
 package baseball;
 
 public enum ErrorMessage {
-    ERROR_NOT_NUMBER_IN_RANGE(100, "범위에 맞지 않는 숫자를 입력하였습니다.");
+    ERROR_NOT_NUMBER_IN_RANGE(100, "범위에 맞지 않는 숫자를 입력하였습니다."),
+    ERROR_NULL_AND_EMPTY(200, "공백 또는 빈문자열은 입력할 수 없습니다.");
 
     private final int errorCode;
     private final String errorMessage;
