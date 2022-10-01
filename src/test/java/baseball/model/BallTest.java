@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.utils.StringUtil;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -36,11 +37,20 @@ public class BallTest {
     }
 
     @DisplayName("1~9 이외에 값을 받는지 확인")
-    @ParameterizedTest
+   @ParameterizedTest
     @ValueSource(ints = {10, 5, 0})
     void validateRangeNumber(int input){
         assertThatIllegalArgumentException().isThrownBy(() -> {
             new Ball(input);
+        });
+    }
+
+    @DisplayName("숫자가 아닌 값이 입력되면 예외 반환")
+    @ParameterizedTest
+    @ValueSource( strings = {"@", "Money", "!!"})
+    void validateNonNumberTest(String input){
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            StringUtil.validateIntegerType(input);
         });
     }
 
