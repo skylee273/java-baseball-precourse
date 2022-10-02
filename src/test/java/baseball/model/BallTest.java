@@ -11,12 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class BallTest {
 
     private List<BallNumber> ballNumbers = new ArrayList<>();
-    private List<BallNumber> myBallNumbers = new ArrayList<>();
 
     @DisplayName("숫자 야구 번호 객체가 3개보다 적으면 예외 발생")
     @Test
@@ -36,7 +34,7 @@ public class BallTest {
             ballNumbers.add(new BallNumber(i));
         }
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            new Ball(ballNumbers) ;
+            new Ball(ballNumbers);
         });
     }
 
@@ -57,5 +55,17 @@ public class BallTest {
             StringUtil.validateIntegerType(input);
         });
     }
+
+    @DisplayName("중복된 숫자가 있으면 예외 발생")
+    @Test
+    void throwExceptionWhenDuplication() {
+        for (int i = 1; i <= 3; i++) {
+            ballNumbers.add(new BallNumber(1));
+        }
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            new Ball(ballNumbers);
+        });
+    }
+
 
 }
