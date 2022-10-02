@@ -12,11 +12,13 @@ public class Ball {
     private static final int BALL_SIZE = 3;
 
     private List<BallNumber> ballNumbers;
+    private List<BallPosition> ballPositions;
 
-    public Ball(List<BallNumber> ball) {
+    public Ball(List<BallNumber> ball, List<BallPosition> positions) {
         validateBallSize(ball);
         validateDuplication(ball);
         this.ballNumbers = Collections.unmodifiableList(ball);
+        this.ballPositions = Collections.unmodifiableList(positions);
     }
 
 

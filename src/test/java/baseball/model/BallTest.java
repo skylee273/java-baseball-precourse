@@ -15,15 +15,17 @@ import static org.assertj.core.api.Assertions.*;
 public class BallTest {
 
     private List<BallNumber> ballNumbers = new ArrayList<>();
+    private List<BallPosition> ballPositions = new ArrayList<>();
 
     @DisplayName("숫자 야구 번호 객체가 3개보다 적으면 예외 발생")
     @Test
     void throwExceptionWhenNotThreeBallNumbers() {
         for(int i = 1; i <=2; i++){
             ballNumbers.add(new BallNumber(i));
+            ballPositions.add(new BallPosition(i-1));
         }
         assertThatIllegalArgumentException().isThrownBy(() -> {
-           new Ball(ballNumbers) ;
+            new Ball(ballNumbers, ballPositions) ;
         });
     }
 
@@ -32,9 +34,10 @@ public class BallTest {
     void throwExceptionWhenNotThreeBallNumbers2(){
         for(int i = 1; i <=4; i++){
             ballNumbers.add(new BallNumber(i));
+            ballPositions.add(new BallPosition(i-1));
         }
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            new Ball(ballNumbers);
+            new Ball(ballNumbers, ballPositions) ;
         });
     }
 
@@ -43,8 +46,9 @@ public class BallTest {
     void createTest(){
         for(int i = 1; i <=3; i++){
             ballNumbers.add(new BallNumber(i));
+            ballPositions.add(new BallPosition(i-1));
         }
-        assertThatCode(() -> new Ball(ballNumbers)).doesNotThrowAnyException();
+        assertThatCode(() -> new Ball(ballNumbers, ballPositions)).doesNotThrowAnyException();
     }
 
     @DisplayName("숫자가 아닌 값이 입력되면 예외 반환")
@@ -61,9 +65,10 @@ public class BallTest {
     void throwExceptionWhenDuplication() {
         for (int i = 1; i <= 3; i++) {
             ballNumbers.add(new BallNumber(1));
+            ballPositions.add(new BallPosition(i-1));
         }
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            new Ball(ballNumbers);
+            new Ball(ballNumbers, ballPositions);
         });
     }
 
