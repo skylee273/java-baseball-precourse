@@ -1,14 +1,11 @@
 package baseball.model;
 
-import baseball.utils.StringUtil;
+import baseball.BallStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-
 import java.util.Arrays;
-
-import static org.assertj.core.api.Assertions.assertThatCode;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class BallsTest {
 
@@ -41,4 +38,24 @@ public class BallsTest {
             new Balls(Arrays.asList(1,1,2));
         });
     }
+
+    @Test
+    void compareBallsTest() {
+        Balls computer = new Balls(Arrays.asList(1, 2, 3));
+        assertThat(computer.compareBallsAndBall(new Ball(0, 1))).isEqualTo(BallStatus.STRIKE);
+        assertThat(computer.compareBallsAndBall(new Ball(2, 1))).isEqualTo(BallStatus.BALL);
+        assertThat(computer.compareBallsAndBall(new Ball(0, 4))).isEqualTo(BallStatus.NOTHING);
+    }
+
+    @Test
+    void compareBetweenBallsTest() {
+        Balls computer = new Balls(Arrays.asList(1, 3, 5));
+        assertThat(computer.compareBetweenBalls(new Balls(Arrays.asList(2, 4, 6)))).isEqualTo("낫싱");
+        assertThat(computer.compareBetweenBalls(new Balls(Arrays.asList(1, 3, 5)))).isEqualTo("1 스트라이크");
+        assertThat(computer.compareBetweenBalls(new Balls(Arrays.asList(2, 5, 6)))).isEqualTo("1 볼");
+        assertThat(computer.compareBetweenBalls(new Balls(Arrays.asList(2, 1, 3)))).isEqualTo("1 스트라이크 2 볼");
+        assertThat(computer.compareBetweenBalls(new Balls(Arrays.asList(1, 2, 3)))).isEqualTo("3 스트라이크");
+    }
+
+
 }
