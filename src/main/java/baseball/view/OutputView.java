@@ -10,6 +10,7 @@ public class OutputView {
     public static void printQuitMessage() {
         printMessage(BASEBALL_GAME_QUIT_MESSAGE);
     }
+
     public static void printLossMessage(String lossMessage) {
         printMessage(lossMessage);
     }

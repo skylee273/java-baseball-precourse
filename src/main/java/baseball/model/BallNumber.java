@@ -13,14 +13,14 @@ public class BallNumber {
     private static final List<Integer> ballStore = new ArrayList<>();
 
     static {
-        for(int i = MIN_BALL_NUMBER; i <= MAX_BALL_NUMBER; ++i) {
+        for (int i = MIN_BALL_NUMBER; i <= MAX_BALL_NUMBER; ++i) {
             ballStore.add(i);
         }
     }
 
     private int ballNumber;
 
-    public BallNumber(int ballNumber){
+    public BallNumber(int ballNumber) {
         validateBallNumber(ballNumber);
         this.ballNumber = ballNumber;
     }
@@ -31,7 +31,9 @@ public class BallNumber {
         }
     }
 
-    public int getBallNumber() { return ballNumber;}
+    public int getBallNumber() {
+        return ballNumber;
+    }
 
     @Override
     public boolean equals(Object o) {

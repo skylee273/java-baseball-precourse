@@ -8,6 +8,6 @@ public class Application {
         do {
             Balls computer = BaseBallGame.ready();
             BaseBallGame.start(computer);
-        } while(BaseBallGame.isNewGame());
+        } while (BaseBallGame.isNewGame());
     }
 }

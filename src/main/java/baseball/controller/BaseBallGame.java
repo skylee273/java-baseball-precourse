@@ -14,10 +14,11 @@ public class BaseBallGame {
     public static Balls ready() {
         return new Balls(new RandomNumberGenerator().generateRandomNumberList());
     }
+
     public static void start(Balls computer) {
         Balls user = new Balls(InputView.getManualBalls());
         BallScore ballScore = user.compareBetweenBalls(computer);
-        if(!getIsWinning(ballScore)) {
+        if (!getIsWinning(ballScore)) {
             OutputView.printLossMessage(ballScore.toString());
             start(computer);
             return;
@@ -32,10 +33,10 @@ public class BaseBallGame {
 
     public static boolean isNewGame() {
         int reStartManualBalls = InputView.getReStartManualBalls();
-        if(reStartManualBalls != NEW_GAME  && reStartManualBalls != QUIT) {
+        if (reStartManualBalls != NEW_GAME && reStartManualBalls != QUIT) {
             throw new IllegalArgumentException();
         }
-        if(reStartManualBalls == QUIT) OutputView.printQuitMessage();
+        if (reStartManualBalls == QUIT) OutputView.printQuitMessage();
         return reStartManualBalls == NEW_GAME;
 
     }

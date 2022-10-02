@@ -9,10 +9,9 @@ public class RandomNumberGenerator {
     private static final int MIN_NUM = 1;
     private static final int NUM_LEN = 3;
 
-
     public ArrayList<Integer> generateRandomNumberList() {
         ArrayList<Integer> computerNumberList = new ArrayList<>();
-        while(computerNumberList.size() < NUM_LEN) {
+        while (computerNumberList.size() < NUM_LEN) {
             computerNumberList.add(generateRandomNumber());
         }
         return computerNumberList;

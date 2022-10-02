@@ -8,11 +8,13 @@ public class BallPosition {
 
     private int ballPosition;
 
-    public BallPosition(int ballPosition){
+    public BallPosition(int ballPosition) {
         this.ballPosition = ballPosition;
     }
 
-    public int getBallPosition() { return ballPosition;}
+    public int getBallPosition() {
+        return ballPosition;
+    }
 
     @Override
     public boolean equals(Object o) {

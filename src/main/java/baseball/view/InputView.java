@@ -2,7 +2,9 @@ package baseball.view;
 
 import baseball.utils.ScannerUtil;
 import baseball.utils.StringUtil;
+
 import java.util.*;
+
 import static baseball.GameMessage.*;
 
 public class InputView {
@@ -19,7 +21,7 @@ public class InputView {
 
     private static List<Integer> splitBaseBallNumber(String input) {
         List<Integer> balls = new ArrayList<>();
-        for(String number : input.split(DELIMITER)){
+        for (String number : input.split(DELIMITER)) {
             balls.add(StringUtil.convertStringToInteger(number));
         }
         return balls;

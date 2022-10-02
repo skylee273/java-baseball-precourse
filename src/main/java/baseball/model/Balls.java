@@ -24,8 +24,8 @@ public class Balls {
         return AutoBallGenerator.generate(balls);
     }
 
-    private void validateBallSize(List<Integer> ball){
-        if(ball.size() != BALL_SIZE) {
+    private void validateBallSize(List<Integer> ball) {
+        if (ball.size() != BALL_SIZE) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_BALL_SIZE.getErrorMessage());
         }
     }
@@ -33,7 +33,7 @@ public class Balls {
     private void validateDuplication(List<Integer> ball) {
         Set<Integer> originBall = new HashSet<>(ball);
 
-        if(originBall.size() != BALL_SIZE) {
+        if (originBall.size() != BALL_SIZE) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_BALL_NON_DUPLICATION.getErrorMessage());
         }
     }
@@ -41,8 +41,8 @@ public class Balls {
     public BallStatus compareBallsAndBall(Ball otherBall) {
         for (Ball ball : balls) {
             BallStatus compareStatus = ball.compare(otherBall);
-            if(compareStatus.isStrike()) return BallStatus.STRIKE;
-            if(compareStatus.isBall()) return BallStatus.BALL;
+            if (compareStatus.isStrike()) return BallStatus.STRIKE;
+            if (compareStatus.isBall()) return BallStatus.BALL;
         }
         return BallStatus.NOTHING;
     }
