@@ -6,13 +6,13 @@ import java.util.Objects;
 
 public class BallPosition {
 
-    private static final List<Integer> positionStore = new ArrayList<>();
-
     private int ballPosition;
 
     public BallPosition(int ballPosition){
         this.ballPosition = ballPosition;
     }
+
+    public int getBallPosition() { return ballPosition;}
 
     @Override
     public boolean equals(Object o) {
