@@ -9,6 +9,7 @@ public class BaseBallGame {
 
     private static final int NEW_GAME = 1;
     private static final int QUIT = 2;
+    private static final int STRIKE_OUT = 3;
 
     public static Balls ready() {
         return new Balls(new RandomNumberGenerator().generateRandomNumberList());
@@ -26,7 +27,7 @@ public class BaseBallGame {
     }
 
     private static boolean getIsWinning(BallScore ballScore) {
-        return ballScore.getStrikeScore() == 3;
+        return ballScore.getStrikeScore() == STRIKE_OUT;
     }
 
     public static boolean isNewGame() {
