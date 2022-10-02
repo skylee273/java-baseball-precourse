@@ -24,4 +24,5 @@ public class BallNumberTest {
             new BallNumber(input);
         });
     }
+
 }
