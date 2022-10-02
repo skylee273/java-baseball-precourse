@@ -12,10 +12,4 @@ public class ScannerUtil {
         validateNullAndEmpty(isNullOrEmpty(stringInput));
         return stringInput;
     }
-
-    public static int readInt() {
-        String stringInput = Console.readLine();
-        validateNullAndEmpty(isNullOrEmpty(stringInput));
-        return Integer.parseInt(stringInput);
-    }
 }
