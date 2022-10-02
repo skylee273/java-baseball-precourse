@@ -31,7 +31,6 @@ public class BallNumber {
         }
     }
 
-    public static List<Integer> getBallStore() {return ballStore;}
     public int getBallNumber() { return ballNumber;}
 
     @Override
