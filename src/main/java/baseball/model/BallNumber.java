@@ -4,6 +4,7 @@ import baseball.ErrorMessage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class BallNumber {
     private static final int MIN_BALL_NUMBER = 1;
@@ -32,4 +33,22 @@ public class BallNumber {
 
     public static List<Integer> getBallStore() {return ballStore;}
     public int getBallNumber() { return ballNumber;}
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BallNumber that = (BallNumber) o;
+        return ballNumber == that.ballNumber;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ballNumber);
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(ballNumber);
+    }
 }
