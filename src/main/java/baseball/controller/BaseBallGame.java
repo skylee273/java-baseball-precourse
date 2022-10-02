@@ -7,6 +7,9 @@ import baseball.view.OutputView;
 
 public class BaseBallGame {
 
+    private static final int NEW_GAME = 1;
+    private static final int QUIT = 2;
+
     public static Balls ready() {
         return new Balls(new RandomNumberGenerator().generateRandomNumberList());
     }
@@ -26,6 +29,15 @@ public class BaseBallGame {
         return ballScore.getStrikeScore() == 3;
     }
 
+    public static boolean isNewGame() {
+        int reStartManualBalls = InputView.getReStartManualBalls();
+        if(reStartManualBalls != NEW_GAME  && reStartManualBalls != QUIT) {
+            throw new IllegalArgumentException();
+        }
+        if(reStartManualBalls == QUIT) OutputView.printQuitMessage();
+        return reStartManualBalls == NEW_GAME;
+
+    }
 
 
 }
