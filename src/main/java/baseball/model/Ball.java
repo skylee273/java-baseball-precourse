@@ -1,24 +1,26 @@
 package baseball.model;
 
 import baseball.ErrorMessage;
-import baseball.GameMessage;
+
+import java.util.Collections;
+import java.util.List;
 
 public class Ball {
-    private static final int MIN_BALL_NUMBER = 1;
-    private static final int MAX_BALL_NUMBER = 9;
-    private  int number;
 
-    public Ball(int number){
-        validateBallNumber(isBallNumber(number));
-        this.number = number;
+    private static final int BALL_SIZE = 3;
+
+    private List<BallNumber> ballNumbers;
+
+    public Ball(List<BallNumber> ball) {
+        validateBallSize(ball);
+        this.ballNumbers = Collections.unmodifiableList(ball);
     }
 
-    private static boolean isBallNumber(int number){
-        return number >= MIN_BALL_NUMBER &&  number <= MAX_BALL_NUMBER;
-    }
 
-    private void validateBallNumber(boolean isRangeInNumber){
-        if(!isRangeInNumber) throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_NUMBER_IN_RANGE.getErrorMessage());
+    private void validateBallSize(List<BallNumber> ball){
+        if(ball.size() != BALL_SIZE) {
+            throw new IllegalArgumentException(ErrorMessage.ERROR_BALL_SIZE.getErrorMessage());
+        }
     }
 
 }
