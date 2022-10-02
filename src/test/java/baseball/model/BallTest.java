@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.BallStatus;
 import baseball.utils.StringUtil;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -14,62 +15,19 @@ import static org.assertj.core.api.Assertions.*;
 
 public class BallTest {
 
-    private List<BallNumber> ballNumbers = new ArrayList<>();
-    private List<BallPosition> ballPositions = new ArrayList<>();
-
-    @DisplayName("숫자 야구 번호 객체가 3개보다 적으면 예외 발생")
+    @DisplayName("정상 숫자 야구 객체 생성")
     @Test
-    void throwExceptionWhenNotThreeBallNumbers() {
-        for(int i = 1; i <=2; i++){
-            ballNumbers.add(new BallNumber(i));
-            ballPositions.add(new BallPosition(i-1));
-        }
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            new Ball(ballNumbers, ballPositions) ;
-        });
+    void createTest() {
+        assertThatCode(() -> new Ball(0, 1)).doesNotThrowAnyException();
     }
 
-    @DisplayName("숫자 야구 번호가 객체가 3개보다 맣으면 예외 발생")
+    @DisplayName("볼, 스트라이크, 낫싱 비교 테스트")
     @Test
-    void throwExceptionWhenNotThreeBallNumbers2(){
-        for(int i = 1; i <=4; i++){
-            ballNumbers.add(new BallNumber(i));
-            ballPositions.add(new BallPosition(i-1));
-        }
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            new Ball(ballNumbers, ballPositions) ;
-        });
-    }
-
-    @DisplayName("숫자 야구 번호 3개 정상 숫자 야구 객체 발생")
-    @Test
-    void createTest(){
-        for(int i = 1; i <=3; i++){
-            ballNumbers.add(new BallNumber(i));
-            ballPositions.add(new BallPosition(i-1));
-        }
-        assertThatCode(() -> new Ball(ballNumbers, ballPositions)).doesNotThrowAnyException();
-    }
-
-    @DisplayName("숫자가 아닌 값이 입력되면 예외 반환")
-    @ParameterizedTest
-    @ValueSource( strings = {"@", "Money", "!!"})
-    void validateNonNumberTest(String input){
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            StringUtil.validateIntegerType(input);
-        });
-    }
-
-    @DisplayName("중복된 숫자가 있으면 예외 발생")
-    @Test
-    void throwExceptionWhenDuplication() {
-        for (int i = 1; i <= 3; i++) {
-            ballNumbers.add(new BallNumber(1));
-            ballPositions.add(new BallPosition(i-1));
-        }
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            new Ball(ballNumbers, ballPositions);
-        });
+    void compareTest() {
+        Ball computer = new Ball(0, 1);
+        assertThat(computer.compare(new Ball(1, 1))).isEqualTo(BallStatus.BALL);
+        assertThat(computer.compare(new Ball(0, 1))).isEqualTo(BallStatus.STRIKE);
+        assertThat(computer.compare(new Ball(0, 2))).isEqualTo(BallStatus.NOTHING);
     }
 
 
