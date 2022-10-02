@@ -1,39 +1,20 @@
 package baseball.model;
 
+import baseball.BallStatus;
 import baseball.ErrorMessage;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Ball {
 
-    private static final int BALL_SIZE = 3;
+    private final BallPosition ballPosition;
+    private final BallNumber ballNumber;
 
-    private List<BallNumber> ballNumbers;
-    private List<BallPosition> ballPositions;
-
-    public Ball(List<BallNumber> ball, List<BallPosition> positions) {
-        validateBallSize(ball);
-        validateDuplication(ball);
-        this.ballNumbers = Collections.unmodifiableList(ball);
-        this.ballPositions = Collections.unmodifiableList(positions);
+    public Ball(int ballPosition, int ballNumber) {
+        this.ballNumber = new BallNumber(ballNumber);
+        this.ballPosition = new BallPosition(ballPosition);
     }
 
 
-    private void validateBallSize(List<BallNumber> ball){
-        if(ball.size() != BALL_SIZE) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_BALL_SIZE.getErrorMessage());
-        }
-    }
-
-    private void validateDuplication(List<BallNumber> ball) {
-        Set<BallNumber> originBall = new HashSet<>(ball);
-
-        if(originBall.size() != BALL_SIZE) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_BALL_NON_DUPLICATION.getErrorMessage());
-        }
-    }
 
 }
