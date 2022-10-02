@@ -6,12 +6,7 @@ import java.util.*;
 import static baseball.GameMessage.*;
 
 public class InputView {
-    String inputNumber;
     private static final String DELIMITER = "";
-
-    public InputView(String inputNumber) {
-        this.inputNumber = inputNumber;
-    }
 
     public static List<Integer> getManualBalls() {
         printMessage(BASEBALL_GAME_START_INPUT);
