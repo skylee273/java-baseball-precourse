@@ -50,11 +50,11 @@ public class BallsTest {
     @Test
     void compareBetweenBallsTest() {
         Balls computer = new Balls(Arrays.asList(1, 3, 5));
-        assertThat(computer.compareBetweenBalls(new Balls(Arrays.asList(2, 4, 6)))).isEqualTo("낫싱");
-        assertThat(computer.compareBetweenBalls(new Balls(Arrays.asList(1, 3, 5)))).isEqualTo("1 스트라이크");
-        assertThat(computer.compareBetweenBalls(new Balls(Arrays.asList(2, 5, 6)))).isEqualTo("1 볼");
-        assertThat(computer.compareBetweenBalls(new Balls(Arrays.asList(2, 1, 3)))).isEqualTo("1 스트라이크 2 볼");
-        assertThat(computer.compareBetweenBalls(new Balls(Arrays.asList(1, 2, 3)))).isEqualTo("3 스트라이크");
+        assertThat(computer.compareBetweenBalls(new Balls(Arrays.asList(2, 4, 6))).toString()).isEqualTo("낫싱");
+        assertThat(computer.compareBetweenBalls(new Balls(Arrays.asList(1, 3, 5))).toString()).isEqualTo("3스트라이크");
+        assertThat(computer.compareBetweenBalls(new Balls(Arrays.asList(2, 5, 6))).toString()).isEqualTo("1볼");
+        assertThat(computer.compareBetweenBalls(new Balls(Arrays.asList(2, 1, 3))).toString()).isEqualTo("2볼");
+        assertThat(computer.compareBetweenBalls(new Balls(Arrays.asList(1, 2, 3))).toString()).isEqualTo("1볼 1스트라이크");
     }
 
 
