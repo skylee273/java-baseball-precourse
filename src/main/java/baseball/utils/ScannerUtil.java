@@ -1,14 +1,20 @@
 package baseball.utils;
 
-import java.util.Scanner;
 
 import static baseball.utils.StringUtil.*;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class ScannerUtil {
-    private static final Scanner scanner = new Scanner(System.in);
+
+    public static String readLine() {
+        String stringInput = Console.readLine();
+        validateNullAndEmpty(isNullOrEmpty(stringInput));
+        return stringInput;
+    }
 
     public static int readInt() {
-        String stringInput = scanner.nextLine();
+        String stringInput = Console.readLine();
         validateNullAndEmpty(isNullOrEmpty(stringInput));
         return Integer.parseInt(stringInput);
     }
